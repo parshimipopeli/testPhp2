@@ -1,0 +1,56 @@
+[{
+  "id": "1",
+  "categorie": "1",
+  "article":"Dans son cœur, HTML est un langage vraiment simple, composé d’éléments appliquables à des fragments de texte dans un document pour leur donner un sens différent (est-ce un paragraphe ? est-ce une liste à puces ? est-ce une partie de tableau ?), pour structurer un document en sections logiques (a‑t‑il un en-tête ? est-il sur trois colonnes ? a-t-il un menu de navigation ?) et pour intégrer du contenu comme images ou vidéos dans une page. Ce module est une introduction aux deux premiers concepts ; il présente les notions fondamentales et la syntaxe à connaître pour comprendre le HTML.\n\nPrérequis "
+},
+  {
+    "id": "2",
+    "categorie": "1",
+    "article": "head dans un document HTML est une partie du document qui n’est pas affichée par le navigateur au chargement de la page. Elle contient des informations comme le titre (<title>) de la page, des liens aux CSS (si vous souhaitez composer le contenu HTML grâce  des CSS), des liens aux favicons et des méta-données (auteur du document, mots-clés décrivant le document, etc.)."
+  },
+  {
+    "id": "3",
+    "categorie": "1",
+    "article": ""
+  },
+  {
+    "id": "4",
+    "categorie": "2",
+    "article": "\"Bienvenue dans le cours de JavaScript pour débutants proposé par MDN ! Dans ce premier article, nous aborderons JavaScript sous un angle général afin de comprendre ce qu'il est et à quoi il sert. Nous nous assurerons ici que vous cernez bien le but premier du langage."
+  },
+  {
+    "id": "5",
+    "categorie": "2",
+    "article": "Styling text"
+  },
+  {
+    "id": "6",
+    "categorie": "2",
+    "article": "Styling boxe"
+  },
+  {
+    "id": "7",
+    "categorie": "3",
+    "article": "Styling boxe"
+  },
+  {
+    "id": "8",
+    "categorie": "3",
+    "article": "Styling boxe"
+  },
+  {
+    "id": "9",
+    "categorie": "4",
+    "article": "Styling boxe"
+  },
+  {
+    "id": "10",
+    "categorie": "4",
+    "article": "Styling boxe"
+  },
+  {
+    "id": "11",
+    "categorie": "4",
+    "article": "Styling boxe"
+  }
+]

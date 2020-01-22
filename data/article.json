@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "categorie": "1",
+    "article": "introduction au HTML "
+  },
+  {
+    "id": "2",
+    "categorie": "1",
+    "article": "Les balises html"
+  },
+  {
+    "id": "3",
+    "categorie": "1",
+    "article": "HTML tables"
+  },
+  {
+    "id": "4",
+    "categorie": "2",
+    "article": "Introduction au css"
+  },
+  {
+    "id": "5",
+    "categorie": "2",
+    "article": "Styling text"
+  },
+  {
+    "id": "6",
+    "categorie": "2",
+    "article": "Styling boxe"
+  },
+  {
+    "id": "7",
+    "categorie": "3",
+    "article": "introsuction au js"
+  },
+  {
+    "id": "8",
+    "categorie": "3",
+    "article": "JavaScript first steps"
+  },
+  {
+    "id": "9",
+    "categorie": "4",
+    "article": "Introduction au php"
+  },
+  {
+  "id": "10",
+  "categorie": "4",
+  "article": "Les variables"
+},
+  {
+    "id": "11",
+    "categorie": "4",
+    "article": "La concatenation"
+  }
+]
