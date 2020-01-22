@@ -13,8 +13,19 @@ session_start();
 if (!isset($_SESSION['name'])) {
     header('LOCATION: login.php');
 }else{
-?>
+if (isset($_SESSION['name'])) {
+    echo 'Bonjour ' . $_SESSION['name'];
+}
+if (isset($_POST['deconnection'])){
 
+    session_destroy();
+    header('LOCATION: login.php');
+
+}
+?>
+<form action="" method="POST">
+    <button name="deconnection">Déconnexion</button>
+</form>
 <section id="main">
             <div id="menu-sm">
                 <div class="container-fluid">

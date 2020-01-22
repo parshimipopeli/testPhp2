@@ -1,19 +1,19 @@
 <?php
 session_start();
-//$mail = htmlspecialchars($_POST['email']);
-//$pwd = htmlspecialchars($_POST['pwd']);
+$mail = isset($_POST['email'])? htmlspecialchars($_POST['email']): '';
+$pwd = isset($_POST['pwd'])? htmlspecialchars($_POST['pwd']): '';
 if (isset($_POST['login'])) {
 
-    if (isset($_POST['email']) && isset($_POST['pwd'])) {
+    if (isset($mail) && isset($pwd)) {
 
         $json = file_get_contents("data/users.json");
         $donneesJson = json_decode($json, true);
         $email = false;
         foreach ($donneesJson as $key => $users) {
-            if ($_POST['email'] == $users['email']){
+            if ($mail == $users['email']){
                 $email = true;
-                if (password_verify($_POST['pwd'], $users['password'])){
-                    $_SESSION['name'] = $users['firstName'];
+                if (password_verify($pwd, $users['password'])){
+                    $_SESSION['name'] = $users['lastName'];
                     header('Location: index.php');
                 }else{
                     echo 'votre mot de passe n\' est pas valide';
@@ -25,8 +25,8 @@ if (isset($_POST['login'])) {
         echo 'email invalide';
     }
 
-
 }
+
 ?>
 
 <!doctype html>
