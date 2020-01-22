@@ -10,7 +10,7 @@
 <body>
 <?php 
 session_start();
-if (!isset($_POST['login'])) {
+if (!isset($_SESSION['name'])) {
     header('LOCATION: login.php');
 }else{
 ?>

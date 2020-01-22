@@ -1,6 +1,20 @@
 [{
+
     "firstName" : "Lamorski",
     "lastName" : "Philippe",
     "email" : "philippe.lamorski@gmail.fr",
-    "password" : " $2y$10$ifdrxRTwC3TAjJEyOxiB9uKia5u5qca7cwkl8j2RBzK/RNLD2XpL2"
-}]
+    "password" : "$2y$10$QutESuw0.cjfpanBaZSe5.SNppViOXKfvxDRkfhc/qn1VokF/f3ma"
+
+},
+    {
+        "firstName": "Lamorski",
+        "lastName": "robert",
+        "email": "philippe.lamorskipro@gmail.fr",
+        "password": "$2y$10$6lc2EHL.iSXIXpggc6P54u5DH.aqLZ7T0GIf1ySTm2wUxlmZ4Bpk2"
+    },
+    {"firstName" : "Lamorski",
+        "lastName" : "flora",
+        "email" : "flora.lamorski@gmail.fr",
+        "password" : "$2y$10$FvItNdwY01tk1nwRI.KyGeWjh1HbBY6kPma6X3nsnlBVUpd7C.ac2"
+    }
+]
