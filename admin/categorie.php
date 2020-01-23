@@ -21,6 +21,36 @@ if (isset($_POST['intitule'])) {
     file_put_contents('../data/categorie.json', json_encode($newDonneesJson));
 }
 
+//if(isset($_GET["modifier"]))
+//{
+//    $id = $_GET["id"];
+//
+//    if ($_GET["id"] == "categorie")
+//    {
+//        $categorie[$id]->{"language"} = $_POST["nom"];
+//    }
+//}
+//?>
+<!---->
+<!--<form method="post" action="interface-admin.php">-->
+<!--    <ul>-->
+<!--        --><?php
+//        foreach($categorie as $key => $val)
+//        {
+//            echo
+//                '
+//          <li>
+//            <input type="text" name="nom" value="' . $categorie->{"nom"} . '" />
+//            <input type="hidden" name="id" value="' . $key . '" />
+//            <input type="hidden" name="categorie" value="language" />
+//            <button name="modifier"> Modifier </button>
+//          </li>
+//        ';
+//        }
+//        ?>
+<!--    </ul>-->
+<!--</form>-->
+
 
 ?>
 
@@ -40,24 +70,25 @@ if (isset($_POST['intitule'])) {
 <?php require_once('../includes/define.php'); ?>
 
 <div class="container-fluid">
+
     <div class="row">
-        <div class="col-2 menuAdmin">
-            <h4 class="text-center">Admin</h4>
-            <nav>
+        <div class="col-2 menuAdmin bg-dark">
+            <h4 class="text-center text-white">Admin</h4>
+            <nav >
                 <ul>
-                    <a href="index.php">
+                    <a class="text-white " href="index.php">
                         <li>Index admin</li>
                     </a>
-                    <a href="categorie.php">
+                    <a class="text-white" href="categorie.php">
                         <li>Liste categories</li>
                     </a>
-                    <a href="../index.php">
+                    <a class="text-white" href="../index.php">
                         <li>Retour index</li>
                     </a>
                 </ul>
             </nav>
         </div>
-        <div class="col-8">
+        <div class="offset-1 col-8">
             <div class="container">
                 <h1 class="text-center">Liste catégories</h1>
                 <table class="table table-dark table-striped">
@@ -66,6 +97,8 @@ if (isset($_POST['intitule'])) {
                         <th>id</th>
                         <th>Nom</th>
                         <th>Detail</th>
+                        <th>Delete</th>
+                        <th>Update</th>
                     </tr>
                     </thead>
                     <?php
@@ -83,6 +116,7 @@ if (isset($_POST['intitule'])) {
                             <?= " <a href='categorieDEtail.php?id=" . $category['id'] . "'><button class='bg-success'>See</button></a>"; ?>
                         </td>
                         <td><?= "<a href='categorie.php?delete=" . $category['id'] . "' name='delete' ><button class='bg-danger'>delete</button></a>" ?></td>
+                        <td><?= "<a href='categorie.php?update=" . $category['id'] . "' name='update' ><button class='bg-primary'>update</button></a>" ?></td></td>
                     </tr>
                     <?php } ?>
                     </tbody>
