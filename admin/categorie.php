@@ -1,3 +1,21 @@
+<?php
+ $json = file_get_contents("../data/categorie.json");
+                    $donneesJson = json_decode($json, true);
+
+                    // supression avec button des categories
+        if (isset($_GET['delete'])){
+            unset($donneesJson[$_GET['delete']-1]);
+
+                   // reinjection du tableau dans json
+            $donneesJson = json_encode($donneesJson);
+            file_put_contents( "../data/categorie.json",$donneesJson);
+            header('LOCATION: categorie.php');
+
+
+}
+
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -36,32 +54,34 @@
                         <th>Detail</th>
                     </tr>
                     </thead>
-
                     <?php
                     $json = file_get_contents("../data/categorie.json");
                     $donneesJson = json_decode($json, true);
-
+                              //parcourir tableau json puis afficher les infos dans les <td></td>
                     foreach ($donneesJson as $category) {
                     ?>
-
                     <tbody>
                     <tr>
                         <td> <?= $category['id'] ?>
                         </td>
                         <td><?= $category['language'] ?></td>
                         <td>
-                            <?=  " <a href='categorieDEtail.php?id=" . $category['id']  ."'>voir</a>"; ?>
+                            <?=  " <a href='categorieDEtail.php?id=" . $category['id']  ."'><button class='bg-success'>See</button></a>"; ?>
                         </td>
+                        <td><?= "<a href='categorie.php?delete=" . $category['id'] . "' name='delete' ><button class='bg-danger'>delete</button></a>"?></td>
                     </tr>
                     <?php } ?>
                     </tbody>
                 </table>
-
             </div>
-
         </div>
     </div>
 </div>
+
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
