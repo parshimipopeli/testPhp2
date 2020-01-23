@@ -1,5 +1,10 @@
-<!doctype html>
-<html lang="fr">
+<?php
+require_once('../includes/define.php');
+
+
+?>
+!<!doctype html>
+<html lang=fr>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,11 +16,9 @@
     <title>Document</title>
 </head>
 <body>
-<?php require_once('../includes/define.php'); ?>
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2 menuAdmin" >
+        <div class="col-2 menuAdmin">
             <h4 class="text-center">Admin</h4>
             <nav>
                 <ul>
@@ -30,7 +33,33 @@
         </div>
         <div class="col-8">
             <div class="container">
+                <h1 class="text-center">Détail catégorie</h1>
+                <table class="table table-dark table-striped">
 
+                    <thead>
+                    <tr>
+                        <th>Detail</th>
+                    </tr>
+                    </thead>
+                    <?php
+                    $json = file_get_contents("../data/categorie.json");
+                    $donneesJson = json_decode($json, true);
+                    foreach ($donneesJson as $val) {
+                    if ($val['id'] == $_GET['id']){
+
+
+                    ?>
+
+                    <tbody>
+                    <tr>
+                        <td> <?= $val['description'];?>
+                        </td>
+
+                    </tr>
+                    <?php }
+                    } ?>
+                    </tbody>
+                </table>
 
             </div>
 

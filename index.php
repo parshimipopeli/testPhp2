@@ -4,9 +4,7 @@ session_start();
 if (!isset($_SESSION['name'])) {
     header('LOCATION: login.php');
 } else {
-if (isset($_SESSION['name'])) {
-    echo 'Bonjour ' . $_SESSION['name'];
-}
+
 
 if (isset($_POST['deconnection'])) {
 
@@ -27,40 +25,59 @@ if (isset($_POST['deconnection'])) {
     <title>Document</title>
 </head>
 <body>
-<?php
-if ($_SESSION['droit'] >= ADMIN ){
-    echo "<a href='admin.php'>admin</a>";
-}
-?>
-<form action="" method="POST">
-        <button name="deconnection">Déconnexion</button>
-    </form>
-
-
-    <?php
-
-    $json = file_get_contents("data/categorie.json");
-    $donneesJson = json_decode($json, true);
-
-
-    foreach ($donneesJson as $category) {
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-dark bg-dark col-12">
+            <div class="col-4">
+                <form action="" method="POST">
+                    <button name="deconnection">Déconnexion</button>
+                </form>
+            </div>
+            <div class="col-4">
+                <?php
+                if ($_SESSION['droit'] >= ADMIN) {
+                    echo "<a class='text-center' href='admin/index.php'>admin</a>";
+                }
+                ?>
+            </div>
+            <div class="col-4">
+                <?php if (isset($_SESSION['name'])) {
+                    echo '<p class="text-center text-white"> Bonjour ' . $_SESSION['name'] . "</p>";
+                }
+                ?>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="offset-4 col-8">
+            <?php
+            $json = file_get_contents("data/categorie.json");
+            $donneesJson = json_decode($json, true);
+            foreach ($donneesJson as $category) {
 //        echo "<a href='categorie.php?categorie=" . $category['id'] . "'>" . $category['language'] . "</a><br>";
-        echo  "<div class=\"card-columns\">
+                echo "<div class=\"card-columns\">
   <div class=\"card bg-primary text-center\">
     <div class=\"card-body text-center\">
-      <p class=\"card-text\">". "<a class=\"text-white\" href='categorie.php?categorie=" . $category['id'] . "'>" . $category['language'] . "</a> </p>
+      <p class=\"card-text\">" . "<a class=\"text-white\" href='categorie.php?categorie=" . $category['id'] . "'>" . $category['language'] . "</a> </p>
     </div>
   </div>
 </div>";
-    }
+            }
 
-    ?>
+            ?>
 
 
-    <div id="categories"></div>
-    <?php
-}
-?>
+            <div id="categories"></div>
+            <?php
+            }
+            ?>
+
+        </div>
+    </div>
+
+
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

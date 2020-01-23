@@ -13,21 +13,63 @@
 </head>
 <body>
 <?php
-require_once ('includes/define.php');
 
-$json = file_get_contents("data/detailArticle.json");
-$donneesJson = json_decode($json, true);
-foreach ($donneesJson as $detailArticle) {
-    if ($detailArticle['id'] == $_GET['article']){
-        echo  "<div class=\"card-columns\">
+require_once 'includes/define.php';
+session_start();
+if (!isset($_SESSION['name'])) {
+    header('LOCATION: login.php');
+} else {
+
+
+if (isset($_POST['deconnection'])) {
+
+    session_destroy();
+    header('LOCATION: login.php');
+
+}
+?>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-dark bg-dark col-12">
+            <div class="col-4">
+                <form action="" method="POST">
+                    <button name="deconnection">Déconnexion</button>
+                </form>
+            </div>
+            <div class="col-4">
+                <?php
+                if ($_SESSION['droit'] >= ADMIN) {
+                    echo "<a class='text-center' href='admin/index.php'>admin</a>";
+                }
+                ?>
+            </div>
+            <div class="col-4">
+                <?php if (isset($_SESSION['name'])) {
+                    echo '<p class="text-center text-white"> Bonjour ' . $_SESSION['name'] . "</p>";
+                }
+                ?>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="offset-4 col-8">
+    <?php
+    $json = file_get_contents("data/detailArticle.json");
+    $donneesJson = json_decode($json, true);
+    foreach ($donneesJson as $detailArticle) {
+        if ($detailArticle['id'] == $_GET['article']) {
+            echo "<div class=\"card-columns\">
   <div class=\"card bg-primary text-center\">
     <div class=\"card-body text-center\">
-      <p class=\"card-text\">". $detailArticle['article'] ."</p>
+      <p class=\"card-text\">" . $detailArticle['article'] . "</p>
     </div>
   </div>
 </div>";
+        }
     }
-}
+    }
 ?>
+        </div>
+    </div>
 </body>
 </html>

@@ -12,24 +12,69 @@
     <title>Document</title>
 </head>
 <body>
-
 <?php
-require_once ('includes/define.php');
+require_once 'includes/define.php';
+session_start();
+if (!isset($_SESSION['name'])) {
+    header('LOCATION: login.php');
+} else {
 
-$json = file_get_contents("data/article.json");
-$donneesJson = json_decode($json, true);
-foreach ($donneesJson as $article) {
-    if ($article['categorie'] == $_GET['categorie']){
+
+if (isset($_POST['deconnection'])) {
+
+    session_destroy();
+    header('LOCATION: login.php');
+
+}
+?>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-dark bg-dark col-12">
+            <div class="col-4">
+                <form action="" method="POST">
+                    <button name="deconnection">Déconnexion</button>
+                </form>
+            </div>
+            <div class="col-4">
+                <?php
+                if ($_SESSION['droit'] >= ADMIN) {
+                    echo "<a class='text-center' href='admin/index.php'>admin</a>";
+                }
+                ?>
+            </div>
+            <div class="col-4">
+                <?php if (isset($_SESSION['name'])) {
+                    echo '<p class="text-center text-white"> Bonjour ' . $_SESSION['name'] . "</p>";
+                }
+                ?>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="offset-4 col-8">
+            <?php
+            $json = file_get_contents("data/article.json");
+            $donneesJson = json_decode($json, true);
+            foreach ($donneesJson as $article) {
+                if ($article['categorie'] == $_GET['categorie']) {
 //        echo "<a href='article.php?article=" . $article['id'] . "'>" . $article['article'] . "</a><br>";
-        echo  "<div class=\"card-columns\">
+                    echo "<div class=\"card-columns\">
   <div class=\"card bg-primary text-center\">
     <div class=\"card-body text-center\">
-      <p class=\"card-text\">" . "<a class=\"text-white\" href='article.php?article=" . $article['id'] ."'>". $article['article'] ." </a> </p>
+      <p class=\"card-text\">" . "<a class=\"text-white\" href='article.php?article=" . $article['id'] . "'>" . $article['article'] . " </a> </p>
     </div>
   </div>
 </div>";
-    }
-}
-?>
+                }
+            }
+            }
+            ?>
+        </div>
+    </div>
+
+
+</div>
+
+
 </body>
 </html>

@@ -20,17 +20,42 @@
             <nav>
                 <ul>
                     <a href="index.php"><li>Index admin</li></a>
-
                     <a href="categorie.php"><li>Liste categories</li></a>
                     <a href="../index.php"><li>Retour index</li></a>
-
-
                 </ul>
             </nav>
         </div>
         <div class="col-8">
             <div class="container">
+                <h1 class="text-center">Liste catégories</h1>
+                <table class="table table-dark table-striped">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nom</th>
+                        <th>Detail</th>
+                    </tr>
+                    </thead>
 
+                    <?php
+                    $json = file_get_contents("../data/categorie.json");
+                    $donneesJson = json_decode($json, true);
+
+                    foreach ($donneesJson as $category) {
+                    ?>
+
+                    <tbody>
+                    <tr>
+                        <td> <?= $category['id'] ?>
+                        </td>
+                        <td><?= $category['language'] ?></td>
+                        <td>
+                            <?=  " <a href='categorieDEtail.php?id=" . $category['id']  ."'>voir</a>"; ?>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
 
             </div>
 
