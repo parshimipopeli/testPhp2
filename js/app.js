@@ -1,13 +1,23 @@
+console.log('hello');
+
+
+
 $(function () {
 
 
     $.ajax({
-        url: 'ajax/categorie.json',
-        method: 'GET'
-    }).done(function (data) {
-        $("#categorie").append("<ul id=\'cat\'></ul>");
-        for (let i = 0; i <= data.length - 1; i++) {
-            $("#cat").append("<li> <p class=\"text-center display-5\">" + data[i].id  + "</p>" + "<p class=\"text-center display-5\">" + data[i].lieu + "</p>" +
-                "<p class=\"text-center\">" + data[i].language + "</li>");
+        url: '../admin/addCaegorie.php',
+        dataType: 'json',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({"id": $('#id').val(), "lnguage": $('#language').val(), "description": $('#description').$val()}),
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#response pre').html(JSON.stringify(data));
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
         }
-    });
+
+    })
+});
