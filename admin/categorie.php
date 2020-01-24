@@ -21,35 +21,10 @@ if (isset($_POST['intitule'])) {
     file_put_contents('../data/categorie.json', json_encode($newDonneesJson));
 }
 
-//if(isset($_GET["modifier"]))
-//{
-//    $id = $_GET["id"];
-//
-//    if ($_GET["id"] == "categorie")
-//    {
-//        $categorie[$id]->{"language"} = $_POST["nom"];
-//    }
-//}
-//?>
-<!---->
-<!--<form method="post" action="interface-admin.php">-->
-<!--    <ul>-->
-<!--        --><?php
-//        foreach($categorie as $key => $val)
-//        {
-//            echo
-//                '
-//          <li>
-//            <input type="text" name="nom" value="' . $categorie->{"nom"} . '" />
-//            <input type="hidden" name="id" value="' . $key . '" />
-//            <input type="hidden" name="categorie" value="language" />
-//            <button name="modifier"> Modifier </button>
-//          </li>
-//        ';
-//        }
-//        ?>
-<!--    </ul>-->
-<!--</form>-->
+
+
+
+
 
 
 ?>
@@ -101,13 +76,15 @@ if (isset($_POST['intitule'])) {
                         <th>Update</th>
                     </tr>
                     </thead>
+                    <tbody>
                     <?php
                     $json = file_get_contents("../data/categorie.json");
                     $donneesJson = json_decode($json, true);
                     //parcourir tableau json puis afficher les infos dans les <td></td>
+
                     foreach ($donneesJson as $category) {
                     ?>
-                    <tbody>
+
                     <tr>
                         <td> <?= $category['id'] ?>
                         </td>
@@ -116,7 +93,7 @@ if (isset($_POST['intitule'])) {
                             <?= " <a href='categorieDEtail.php?id=" . $category['id'] . "'><button class='bg-success'>See</button></a>"; ?>
                         </td>
                         <td><?= "<a href='categorie.php?delete=" . $category['id'] . "' name='delete' ><button class='bg-danger'>delete</button></a>" ?></td>
-                        <td><?= "<a href='categorie.php?update=" . $category['id'] . "' name='update' ><button class='bg-primary'>update</button></a>" ?></td></td>
+                        <td><?= "<a href='categorieDEtail.php?id=" . $category['id'] . "&update=ok' name='update' ><button class='bg-primary'>update</button></a>" ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>

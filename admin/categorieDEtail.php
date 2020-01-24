@@ -1,7 +1,6 @@
 <?php
 require_once('../includes/define.php');
 
-
 ?>
 !<!doctype html>
 <html lang=fr>
@@ -34,13 +33,8 @@ require_once('../includes/define.php');
         <div class="col-8">
             <div class="container">
                 <h1 class="text-center">Détail catégorie</h1>
-                <table class="table table-dark table-striped">
 
-                    <thead>
-                    <tr>
-                        <th>Detail</th>
-                    </tr>
-                    </thead>
+
                     <?php
                     $json = file_get_contents("../data/categorie.json");
                     $donneesJson = json_decode($json, true);
@@ -49,17 +43,12 @@ require_once('../includes/define.php');
 
 
                     ?>
+                        <input type="text" value="<?= $val['language'];?>" <?= !isset($_GET['update'])?' disabled':'' ?>>
+                        <input type="text" value="<?= $val['description'];?>" <?= !isset($_GET['update'])?' disabled':'' ?>>
 
-                    <tbody>
-                    <tr>
-                        <td> <?= $val['description'];?>
-                        </td>
-
-                    </tr>
                     <?php }
                     } ?>
-                    </tbody>
-                </table>
+
 
             </div>
 
