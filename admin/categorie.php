@@ -80,20 +80,19 @@ if (isset($_POST['intitule'])) {
                     <?php
                     $json = file_get_contents("../data/categorie.json");
                     $donneesJson = json_decode($json, true);
+
                     //parcourir tableau json puis afficher les infos dans les <td></td>
 
                     foreach ($donneesJson as $category) {
                     ?>
-
                     <tr>
-                        <td> <?= $category['id'] ?>
-                        </td>
-                        <td><?= $category['language'] ?></td>
+                        <td> <?= $category['id']; ?></td>
+                        <td><?= $category['language']; ?></td>
                         <td>
-                            <?= " <a href='categorieDEtail.php?id=" . $category['id'] . "'><button class='bg-success'>See</button></a>"; ?>
+                            <?= " <a href='categorieDEtail.php?id=" . $category['id'] . "'>See</a>"; ?>
                         </td>
-                        <td><?= "<a href='categorie.php?delete=" . $category['id'] . "' name='delete' ><button class='bg-danger'>delete</button></a>" ?></td>
-                        <td><?= "<a href='categorieDEtail.php?id=" . $category['id'] . "&update=ok' name='update' ><button class='bg-primary'>update</button></a>" ?></td>
+                        <td><?= "<a href='categorie.php?delete=" . $category['id'] . "' name='delete' >delete</a>" ?></td>
+                        <td><?= "<a href='categorieDEtail.php?id=" . $category['id'] . "&update=ok' name='update' >update</a>" ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>

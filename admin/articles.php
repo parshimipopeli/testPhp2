@@ -1,17 +1,17 @@
 <?php
 require_once('../includes/define.php');
-$json = file_get_contents("../data/categorie.json");
+
+$json = file_get_contents("../data/articles.json");
 $donneesJson = json_decode($json, true);
-
-
-if (isset($_POST['validate'])) {
+// pour modifier un article via formulaire
+if (isset($_POST['change'])) {
     foreach ($donneesJson as &$val) {
         if ($_POST['id'] == $val['id']) {
-            $val['language'] = $_POST['language'];
-            $val['description'] = $_POST['description'];
+            $val['categorie'] = $_POST['categorie'];
+            $val['article'] = $_POST['article'];
         }
     }
-    file_put_contents('../data/categorie.json', json_encode($donneesJson));
+    file_put_contents('../data/articles.json', json_encode($donneesJson));
     header("LOCATION:categorie.php");
 }
 ?>
@@ -34,41 +34,37 @@ if (isset($_POST['validate'])) {
             <h4 class="text-center text-white">Admin</h4>
             <nav>
                 <ul>
-                    <li><a class="text-white" href="index.php">Index admin </a></li>
-                    <li><a class="text-white" href="categorie.php">Liste categories </a></li>
-                    <li><a class="text-white" href="../index.php">Retour index </a></li>
+                    <li ><a class="text-white" href="index.php">Index admin </a></li>
+                    <li ><a class="text-white" href="categorie.php">Liste categories </a></li>
+                    <li ><a class="text-white" href="../index.php">Retour index </a></li>
                 </ul>
             </nav>
         </div>
         <div class="col-8">
             <div class="container">
-                <h1 class="text-center">Détail catégorie</h1>
+                <h1 class="text-center">Articles</h1>
                 <form action="" method="POST">
                     <?php
                     foreach ($donneesJson as &$val) {
+
                         if ($val['id'] == $_GET['id']) {
                             ?>
                             <input type="hidden" name="id" value="<?= $val['id']; ?>">
-                            <input type="text" name="language" value="<?= $val['language']; ?>"
-                                   <?= !isset($_GET['update']) ? ' disabled' : '' ?>>
-                            <input type="text" name="description" value="<?= $val['description']; ?>"
-                                   <?= !isset($_GET['update']) ? ' disabled' : '' ?>>
-                            <button type="submit" name="validate">valider</button>
-                            <?php
-                            echo "<a href='articles.php?id=" . $val['id'] . "'>Voir article</a>";
+                            <input type="text" name="categorie" value="<?= $val['categorie']; ?>"
+                            "<?= !isset($_GET['update']) ? ' disabled' : '' ?>">
 
+                            <textarea name="article" id="" cols="50" rows="10" value="<?= $val['article']; ?>"
+                            "<?= !isset($_GET['update']) ? ' disabled' : '' ?>"><?= $val['article'];?></textarea>
+                            <button type="submit" name="change">valider</button>
+                            <?php
                         }
                     }
-
                     ?>
                 </form>
             </div>
         </div>
-
     </div>
 </div>
-
-
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
